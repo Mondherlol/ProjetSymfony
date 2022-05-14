@@ -18,8 +18,8 @@
         {% for soutenance in soutenances %}
             <tr>
                 <td>{{ soutenance.id }}</td>
-                <td>{{ soutenance.DateSoutenance ? soutenance.DateSoutenance|date('Y-m-d') : '' }}</td>
-                <td>{{ soutenance.Note }}</td>
+                <td>{{ soutenance.dateSoutenance ? soutenance.dateSoutenance|date('Y-m-d') : '' }}</td>
+                <td>{{ soutenance.note }}</td>
                 <td>
                     <a href="{{ path('app_soutenance_show', {'id': soutenance.id}) }}">show</a>
                     <a href="{{ path('app_soutenance_edit', {'id': soutenance.id}) }}">edit</a>

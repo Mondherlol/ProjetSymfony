@@ -27,21 +27,21 @@ class Soutenance
     /**
      * @ORM\OneToMany(targetEntity=Etudiant::class, mappedBy="soutenance")
      */
-    private $NumEtudiant;
+    private $Numetudiant;
 
     /**
      * @ORM\Column(type="date")
      */
-    private $Date_soutenance;
+    private $date_soutenance;
 
     /**
      * @ORM\Column(type="float")
      */
-    private $Note;
+    private $note;
 
     public function __construct()
     {
-        $this->NumEtudiant = new ArrayCollection();
+        $this->Numetudiant = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -64,27 +64,27 @@ class Soutenance
     /**
      * @return Collection<int, Etudiant>
      */
-    public function getNumEtudiant(): Collection
+    public function getNumetudiant(): Collection
     {
-        return $this->NumEtudiant;
+        return $this->Numetudiant;
     }
 
-    public function addNumEtudiant(Etudiant $numEtudiant): self
+    public function addNumetudiant(Etudiant $numetudiant): self
     {
-        if (!$this->NumEtudiant->contains($numEtudiant)) {
-            $this->NumEtudiant[] = $numEtudiant;
-            $numEtudiant->setSoutenance($this);
+        if (!$this->Numetudiant->contains($numetudiant)) {
+            $this->Numetudiant[] = $numetudiant;
+            $numetudiant->setSoutenance($this);
         }
 
         return $this;
     }
 
-    public function removeNumEtudiant(Etudiant $numEtudiant): self
+    public function removeNumetudiant(Etudiant $numetudiant): self
     {
-        if ($this->NumEtudiant->removeElement($numEtudiant)) {
+        if ($this->Numetudiant->removeElement($numetudiant)) {
             // set the owning side to null (unless already changed)
-            if ($numEtudiant->getSoutenance() === $this) {
-                $numEtudiant->setSoutenance(null);
+            if ($numetudiant->getSoutenance() === $this) {
+                $numetudiant->setSoutenance(null);
             }
         }
 
@@ -93,24 +93,24 @@ class Soutenance
 
     public function getDateSoutenance(): ?\DateTimeInterface
     {
-        return $this->Date_soutenance;
+        return $this->date_soutenance;
     }
 
-    public function setDateSoutenance(\DateTimeInterface $Date_soutenance): self
+    public function setDateSoutenance(\DateTimeInterface $date_soutenance): self
     {
-        $this->Date_soutenance = $Date_soutenance;
+        $this->date_soutenance = $date_soutenance;
 
         return $this;
     }
 
     public function getNote(): ?float
     {
-        return $this->Note;
+        return $this->note;
     }
 
-    public function setNote(float $Note): self
+    public function setNote(float $note): self
     {
-        $this->Note = $Note;
+        $this->note = $note;
 
         return $this;
     }

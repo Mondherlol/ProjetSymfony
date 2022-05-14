@@ -20,7 +20,7 @@ class Etudiant
     /**
      * @ORM\Column(type="integer")
      */
-    private $NCE;
+    private $Nce;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -33,7 +33,7 @@ class Etudiant
     private $Prenom;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Soutenance::class, inversedBy="NumEtudiant")
+     * @ORM\ManyToOne(targetEntity=Soutenance::class, inversedBy="Numetudiant")
      */
     private $soutenance;
 
@@ -42,14 +42,14 @@ class Etudiant
         return $this->id;
     }
 
-    public function getNCE(): ?int
+    public function getNce(): ?int
     {
-        return $this->NCE;
+        return $this->Nce;
     }
 
-    public function setNCE(int $NCE): self
+    public function setNce(int $Nce): self
     {
-        $this->NCE = $NCE;
+        $this->Nce = $Nce;
 
         return $this;
     }

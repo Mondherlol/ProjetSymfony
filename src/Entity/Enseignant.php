@@ -34,6 +34,8 @@ class Enseignant
      */
     private $Prenom;
 
+    private $Numetudiant;
+
     /**
      * @ORM\OneToMany(targetEntity=Soutenance::class, mappedBy="NumJury")
      */
@@ -41,6 +43,7 @@ class Enseignant
 
     public function __construct()
     {
+        $this->Numetudiant = new ArrayCollection();
         $this->soutenances = new ArrayCollection();
     }
 
@@ -81,6 +84,34 @@ class Enseignant
     public function setPrenom(string $Prenom): self
     {
         $this->Prenom = $Prenom;
+
+        return $this;
+    }
+
+  
+    public function getNumetudiant(): Collection
+    {
+        return $this->Numetudiant;
+    }
+
+    public function addNumetudiant(Soutenance $numetudiant): self
+    {
+        if (!$this->Numetudiant->contains($numetudiant)) {
+            $this->Numetudiant[] = $numetudiant;
+            $numetudiant->setNumjury($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNumetudiant(Soutenance $numetudiant): self
+    {
+        if ($this->Numetudiant->removeElement($numetudiant)) {
+            // set the owning side to null (unless already changed)
+            if ($numetudiant->getNumjury() === $this) {
+                $numetudiant->setNumjury(null);
+            }
+        }
 
         return $this;
     }
